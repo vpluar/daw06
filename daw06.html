@@ -1,0 +1,48 @@
+<head>
+<title>Sample code - Traversing an HTML Table with JavaScript and DOM Interfaces</title>
+<script>
+    
+function genera_tabla() {
+  // Obtener la referencia del elemento body
+	var body = document.getElementsByTagName("body")[0];
+	var columnas = document.getElementById("columnas").value;
+    var filas = document.getElementById("filas").value;
+  // Crea un elemento <table> y un elemento <tbody>
+	var tabla   = document.createElement("table");
+	var tblBody = document.createElement("tbody");
+ 
+  // Crea las celdas
+  for (var i = 0; i < filas; i++) {
+    // Crea las hileras de la tabla
+    var hilera = document.createElement("tr");
+ 
+    for (var j = 0; j < columnas; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode(" ");
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+	  celda.style.height = "50px";
+	  celda.style.width = "50px";
+    }
+ 
+    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+    tblBody.appendChild(hilera);
+  }
+ 
+  // posiciona el <tbody> debajo del elemento <table>
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2");
+}
+</script>
+</head>
+<body onload="start()">
+<input type="button" value="Genera una tabla" onclick="genera_tabla()">
+<input id="columnas" style="margin:10px" type="text"><input id="filas" style="margin:10px" type="text"><br><br>
+</body>
+</html>
